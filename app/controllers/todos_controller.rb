@@ -13,4 +13,15 @@ class TodosController < ApplicationController
       error: e.to_s
     }, status: :not_found
   end
+
+  def create
+    todo = Todo.create(todo_params)
+    render json: todo, status: 201
+  end
+
+  private
+
+  def todo_params
+    params.permit(:title, :created_by)
+  end
 end

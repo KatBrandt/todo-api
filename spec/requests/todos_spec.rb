@@ -45,9 +45,8 @@ RSpec.describe "Todos API", type: :request do
 
       it 'creates a todo' do
         expect(response).to have_http_status 201
-
         expect(json[:title]).to eq 'Learn Elm'
-        expect(json[:id]).to eq '1'
+        expect(json[:created_by]).to eq '1'
       end
     end
   end
