@@ -1,5 +1,6 @@
 class TodosController < ApplicationController
   def index
-    render json: {cat: "Bella"}, status: :ok
+    todos = Todo.all
+    render json: todos
   end
 end
