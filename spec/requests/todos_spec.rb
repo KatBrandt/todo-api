@@ -50,4 +50,18 @@ RSpec.describe "Todos API", type: :request do
       end
     end
   end
+
+  describe 'PUT /todos/:id' do
+    let(:valid_attributes) { { title: 'Shopping' } }
+
+    context 'when the record exists' do
+      before { put "/todos/#{todo_id}", params: valid_attributes }
+
+      it 'updates the record' do
+        expect(response).to have_http_status 204
+        expect(json[:title]).to eq 'Shopping'
+        expect(json[:id]).to eq todo_id
+      end
+    end
+  end
 end
