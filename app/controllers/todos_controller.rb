@@ -32,6 +32,12 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    todo = Todo.find(params[:id])
+    todo.destroy
+    render status: 204
+  end
+
   private
 
   def todo_params
