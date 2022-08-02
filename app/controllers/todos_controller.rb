@@ -19,6 +19,19 @@ class TodosController < ApplicationController
     render json: todo, status: 201
   end
 
+  def update
+    todo = Todo.find(params[:id])
+    if todo
+      todo.update(todo_params)
+      render json: todo, status: 204
+    else
+      render json: {
+        error: "Record not Found",
+        status: 404
+      }
+    end
+  end
+
   private
 
   def todo_params

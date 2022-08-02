@@ -59,8 +59,9 @@ RSpec.describe "Todos API", type: :request do
 
       it 'updates the record' do
         expect(response).to have_http_status 204
-        expect(json[:title]).to eq 'Shopping'
-        expect(json[:id]).to eq todo_id
+        # expect(json[:title]).to eq 'Shopping'
+        # expect(json[:id]).to eq todo_id.to_s
+        expect(response.body).to be_empty
       end
     end
   end
