@@ -19,4 +19,30 @@ RSpec.describe "Items", type: :request do
       end
     end
   end
+
+  describe "GET /todos/:todo_id/items/:item_id" do
+    before { get "/todos/#{todo_id}/items/#{id}" }
+
+    context 'when todo item exists' do
+      it 'returns tatus code 200' do
+        expect(response).to have_http_status 200
+      end
+
+      it 'returns the item' do
+        expect(json[:id]).to eq id
+      end
+    end
+  end
+
+  describe "POST /todos/:todo_id/items" do
+    it 'creates new item with valid attributes' do
+      attributes = { name: "Get Cake", done: false }
+
+      post "/todos/#{todo_id}/items", params: attributes
+
+      expect(response).to have_http_status 200
+      expect(json[:todo_id]).to eq todo_id
+      expect(json[:name]).to eq "Get Cake"
+    end
+  end
 end
