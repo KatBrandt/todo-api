@@ -7,7 +7,7 @@ RSpec.describe "Items", type: :request do
   let(:id) { items.first.id }
 
   describe "GET /todos/:todo_id/items" do
-    before { get "todos/#{todo_id}/items" }
+    before { get "/todos/#{todo_id}/items" }
 
     context 'when todo exists' do
       it 'returns status code 200' do
